@@ -5,8 +5,8 @@ LABEL maintainer="Kohei Matsubara <https://github.com/matsuby>"
 
 ENV LD_LIBRARY_PATH /usr/local/lib
 
-RUN apt update \
-    && apt install -y --no-install-recommends sudo \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends sudo \
     && git clone --depth 1 https://github.com/taku910/mecab.git /tmp/mecab \
     && cd /tmp/mecab/mecab \
     && ./configure \
