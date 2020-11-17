@@ -16,7 +16,6 @@ RUN apt-get update \
     && git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git /tmp/neologd \
     && /tmp/neologd/bin/install-mecab-ipadic-neologd -n -y -a \
     && sed -ie 's#/usr/local/lib/mecab/dic/ipadic#/usr/local/lib/mecab/dic/mecab-ipadic-neologd#' /usr/local/etc/mecabrc \
-    && pip3 install mecab-python \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/mecab \
     && rm -rf /tmp/neologd
