@@ -13,9 +13,11 @@ RUN apt-get update \
     && make \
     && make check \
     && make install \
-    && git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git /tmp/neologd \
-    && /tmp/neologd/bin/install-mecab-ipadic-neologd -n -y -a \
-    && sed -ie 's#/usr/local/lib/mecab/dic/ipadic#/usr/local/lib/mecab/dic/mecab-ipadic-neologd#' /usr/local/etc/mecabrc \
+    && git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git /tmp/ipadic-neologd \
+    && /tmp/ipadic-neologd/bin/install-mecab-ipadic-neologd -n -y -a \
+    && git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd.git /tmp/unidic-neologd \
+    && /tmp/unidic-neologd/bin/install-mecab-unidic-neologd -n -y \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/mecab \
-    && rm -rf /tmp/neologd
+    && rm -rf /tmp/ipadic-neologd \
+    && rm -rf /tmp/unidic-neologd
